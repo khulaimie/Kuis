@@ -38,6 +38,8 @@ public class HasilActivity extends AppCompatActivity {
 
     public void reset(View v)
     {
-        finish();
+        Intent i = new Intent(this, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 }

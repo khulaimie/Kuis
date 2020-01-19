@@ -91,7 +91,8 @@ public class SoalActivity extends AppCompatActivity {
     {
         this.nomor_soal++;
         if (MainActivity.soals.size() > this.nomor_soal) {
-            Intent soal = new Intent(getApplicationContext(), SoalActivity.class);
+            Intent soal = new Intent(this, SoalActivity.class);
+            soal.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             Soal s = MainActivity.soals.get(this.nomor_soal);
             soal.putExtra(MainActivity.NOMOR_SOAL, this.nomor_soal);
             soal.putExtra(MainActivity.SOAL_NAME, s.soal);
@@ -102,6 +103,7 @@ public class SoalActivity extends AppCompatActivity {
             startActivity(soal);
         } else {
             Intent hasil = new Intent(this, HasilActivity.class);
+            hasil.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(hasil);
         }
     }

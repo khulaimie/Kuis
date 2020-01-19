@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static MainActivity contex;
     public static ArrayList<Soal> soals = new ArrayList<Soal>();
     public static final String NOMOR_SOAL = "com.khulaimi.projectkuis.NOMOR_SOAL";
     public static final String SOAL_NAME = "com.khulaimi.projectkuis.SOAL";
@@ -68,11 +69,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.addSoal();
+        contex = this;
     }
 
     public void mulai(View v)
     {
         Intent soal = new Intent(this, SoalActivity.class);
+        soal.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         Soal s = soals.get(nomor);
         soal.putExtra(NOMOR_SOAL, nomor);
         soal.putExtra(SOAL_NAME, s.soal);
